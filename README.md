@@ -6,7 +6,7 @@
 
 Your Python Code is too slow? 🐌 
 You want to speed it up but forgot how to code in C++? ⌨
-Convert your Python script to C++ Code using this simple script and OpenAI Codex.
+Convert your Python script to C++ Code using OpenAI Codex.
 
 ## Installation
 ```bash
