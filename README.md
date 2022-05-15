@@ -20,7 +20,7 @@ cd codex_py2cpp
 pip3 install -r requirements.txt
 ```
 ## Run example
-Reads the file "simplePythonScript.py", and feeds the corresponding input prompt to OpenAI Codex. Compilable solutions 
+Reads the file "simpleScript.py", and feeds the corresponding input prompt to OpenAI Codex. Compilable solutions 
 are stored in the form of .cpp and .exe files.
 ```
 python3 python2cppconverter.py
@@ -28,16 +28,16 @@ python3 python2cppconverter.py
 
 If the generated C++ code got compiled, test it with
 ```
-./simplePythonScript.exe
+./simpleScript.exe
 ```
 You hopefully get the same output as when running
 ```
-python3 simplePythonScript.py
+python3 simpleScript.py
 ```
 Check how much faster you are now ...
 ```
-time ./simplePythonScript.exe
-time python3 simplePythonScript.py
+time ./simpleScript.exe
+time python3 simpleScript.py
 ```
 
 ### Example Code Generation:
