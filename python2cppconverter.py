@@ -7,11 +7,10 @@ import openai
 import random
 
 
-
 MAX_SUPPORTED_INPUT_LENGTH = 4096
 USE_STREAM_FEATURE = True
 SET_TEMPERATURE_NOISE = False
-MAX_TOKENS_DEFAULT = 64
+MAX_TOKENS_DEFAULT = 128
 
 STREAM = True
 API_KEYS_LOCATION = "./config"
@@ -51,19 +50,15 @@ def initialize_openai_api():
 
 
 def create_input_prompt(length=3000):
-    input_prompt = ''
-    files_sorted_by_mod_date = sorted(os.listdir('.'), key=os.path.getmtime)
-    # Reverse sorted files.
-    files_sorted_by_mod_date = files_sorted_by_mod_date[::-1]
-    for filename in files_sorted_by_mod_date:
-        if filename == PYTHON_FILE_TO_CONVERT:
-            with open(filename) as f:
-                input_prompt += '\n===================\n# ' + filename + ':\n'
-                input_prompt += f.read() + '\n'
+    inputPrompt = ''
+    filename = PYTHON_FILE_TO_CONVERT
+    with open(filename) as f:
+        inputPrompt += '\n===================\n# ' + filename + ':\n'
+        inputPrompt += f.read() + '\n'
 
-    input_prompt = input_prompt[:length]
-    input_prompt += '\n\n===================\n# ' + 'C++ Code:' + '\n'
-    return input_prompt
+    inputPrompt = inputPrompt[:length]
+    inputPrompt += '\n\n===================\n# ' + 'C++ Code:' + '\n'
+    return inputPrompt
 
 
 def generate_completion(input_prompt, num_tokens):
@@ -77,14 +72,14 @@ def generate_completion(input_prompt, num_tokens):
 
 
 def get_generated_response(response):
-    generated_file = "// C++ Code generated from Python Code: \n"
+    generatedFile = "// C++ Code generated from Python Code: \n"
     while True:
-        next_response = next(response)
-        completion = next_response['choices'][0]['text']
-        generated_file = generated_file + completion
-        if next_response['choices'][0]['finish_reason'] is not None:
+        nextResponse = next(response)
+        completion = nextResponse['choices'][0]['text']
+        generatedFile = generatedFile + completion
+        if nextResponse['choices'][0]['finish_reason'] is not None:
             break
-    return generated_file
+    return generatedFile
 
 
 def write_cpp_file(textResponse):
@@ -96,21 +91,21 @@ def write_cpp_file(textResponse):
     f.close()
 
 
-def test_cpp_compilation(cpp_file):
+def test_cpp_compilation(cppFile):
     """
   Checks if the generated file is compilable using g++
   """
-    exe_file = cpp_file.split(".")[0] + ".exe"
-    if os.system("g++ " + cpp_file + " -o " + exe_file + " &> /dev/null") == 0:
+    exeFile = cppFile.split(".")[0] + ".exe"
+    if os.system("g++ " + cppFile + " -o " + exeFile + " &> /dev/null") == 0:
         return True
     else:
         return False
 
 
-def iterate_for_compilable_solution(prompt, max_iterations):
+def iterate_for_compilable_solution(prompt, maxIterations):
     print('Iterating for a compilable C++ solution ...')
     print()
-    for it in range(max_iterations):
+    for it in range(maxIterations):
         response = generate_completion(prompt, num_tokens=MAX_TOKENS_DEFAULT)
         textResponse = get_generated_response(response)
         write_cpp_file(textResponse)
@@ -122,7 +117,7 @@ def iterate_for_compilable_solution(prompt, max_iterations):
             print("C++ File: {}".format(fileName + ".cpp"))
             print("Compiled Executable: {}".format(fileName + ".exe"))
             break
-        if it == max_iterations - 1:
+        if it == maxIterations - 1:
             print('Unfortunately CODEX did not find a compilable solution. Still you can find the generated code '
                   'in the file: {}'.format(fileName + ".cpp"))
 
@@ -130,6 +125,7 @@ def iterate_for_compilable_solution(prompt, max_iterations):
 if __name__ == "__main__":
     initialize_openai_api()
     prompt = create_input_prompt()
-    iterate_for_compilable_solution(prompt=prompt, max_iterations=5)
+    #print(prompt)
+    iterate_for_compilable_solution(prompt=prompt, maxIterations=5)
 
 

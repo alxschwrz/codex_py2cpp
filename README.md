@@ -25,32 +25,56 @@ are stored in the form of .cpp and .exe files.
 ```
 python3 python2cppconverter.py
 ```
+
+If the generated C++ code got compiled, test it with
+```
+./simplePythonScript.exe
+```
+You hopefully get the same output as when running
+```
+python3 simplePythonScript.py
+```
+Check how much faster you are now ...
+```
+time ./simplePythonScript.exe
+time python3 simplePythonScript.py
+```
+
 ### Example Code Generation:
-Python Snippet
+Python Snippet:
 ```python
-def print_something():
-    print("Hello Cpp file")
+def add_something(x, y):
+    print("casually adding some stuff together")
+    z = x + y
+    return z
 
 
 if __name__ == "__main__":
-    print_something()
+    print('Okay, lets go')
+    print(add_something(5, 2))
 ```
-Converted by Codex to:
+This is how your CODEX conversion may look like:
 ```cpp
 // C++ Code generated from Python Code: 
 #include <iostream>
-#include <string>
-
 using namespace std;
 
-void print_something() {
-    cout << "Hello Cpp file" << endl;
+int add_something(int x, int y) {
+    cout << "casually adding some stuff together" << endl;
+    int z = x + y;
+    return z;
 }
 
 int main() {
-    print_something();
+    cout << "Okay, lets go" << endl;
+    cout << add_something(5, 2) << endl;
     return 0;
 }
 ```
 
+
+Please test your generated code before usage.
+## Credits
+
+This project is based on the OpenAI Codex project.
 Inspired by https://github.com/tom-doerr
