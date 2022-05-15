@@ -1,11 +1,16 @@
-# codex_py2cpp 🤖
+<h1 align="center">🦾 codex_py2cpp 🤖 </h1>
+
+<p align="center">
+    OpenAI Codex Python to C++ Code Generator
+</p>
+
 Your Python Code is too slow? 🐌 
-You wanna speed it up but don't wanna learn C++
+You want to speed it up but forgot how to code in C++? ⌨
 Convert your Python script to C++ Code using this simple script and OpenAI Codex.
 
 ## Installation
 ```bash
-git clone xxx
+git clone https://github.com/alxschwrz/codex_py2cpp.git
 cd codex_py2cpp
 pip3 install -r requirements.txt
 ```
