@@ -14,7 +14,7 @@ MAX_TOKENS_DEFAULT = 128
 
 STREAM = True
 API_KEYS_LOCATION = "./config"
-PYTHON_FILE_TO_CONVERT = "simplePythonScript.py"
+PYTHON_FILE_TO_CONVERT = "simpleScript.py"
 
 
 def create_template_ini_file():
