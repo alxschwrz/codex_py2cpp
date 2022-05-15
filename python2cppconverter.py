@@ -7,7 +7,6 @@ import openai
 import random
 
 
-MAX_SUPPORTED_INPUT_LENGTH = 4096
 USE_STREAM_FEATURE = True
 SET_TEMPERATURE_NOISE = False
 MAX_TOKENS_DEFAULT = 128
@@ -127,5 +126,3 @@ if __name__ == "__main__":
     prompt = create_input_prompt()
     #print(prompt)
     iterate_for_compilable_solution(prompt=prompt, maxIterations=5)
-
-
