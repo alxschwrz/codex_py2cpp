@@ -45,3 +45,5 @@ int main() {
     return 0;
 }
 ```
+
+Inspired by https://github.com/tom-doerr
