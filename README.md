@@ -1,7 +1,7 @@
 # codex_py2cpp 🤖
 Your Python Code is too slow? 🐌 
 You wanna speed it up but don't wanna learn C++
-Convert your Python script to C++ Code using this simple script and OpenAI Codex 🤖
+Convert your Python script to C++ Code using this simple script and OpenAI Codex.
 
 ## Installation
 ```bash
