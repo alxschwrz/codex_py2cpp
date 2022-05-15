@@ -41,7 +41,15 @@ time python3 simpleScript.py
 ```
 
 ### Example Code Generation:
-Python Snippet:
+
+<table>
+<tr>
+<th>[In]: Python Snippet</th>
+<th>[Out]: How the CODEX conversion might look like</th>
+</tr>
+<tr>
+<td>
+
 ```python
 def add_something(x, y):
     print("casually adding some stuff together")
@@ -53,7 +61,10 @@ if __name__ == "__main__":
     print('Okay, lets go')
     print(add_something(5, 2))
 ```
-This is how your CODEX conversion may look like:
+
+</td>
+<td>
+
 ```cpp
 // C++ Code generated from Python Code: 
 #include <iostream>
@@ -71,6 +82,9 @@ int main() {
     return 0;
 }
 ```
+</td>
+</table>
+
 
 
 Please test your generated code before usage.
@@ -78,3 +92,5 @@ Please test your generated code before usage.
 
 This project is based on the OpenAI Codex project.
 Inspired by https://github.com/tom-doerr
+
+
