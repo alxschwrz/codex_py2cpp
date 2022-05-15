@@ -6,7 +6,7 @@
 
 Your Python Code is too slow? 🐌 
 You want to speed it up but forgot how to code in C++? ⌨
-Convert your Python script to C++ Code using this simple script and OpenAI Codex.
+Convert your Python script to C++ Code using OpenAI Codex.
 
 ## How it works
 Reads a Python file and creates an input prompt which is then fed to OpenAI Codex to generate corresponding C++ code. The generated 
@@ -52,3 +52,5 @@ int main() {
     return 0;
 }
 ```
+
+Inspired by https://github.com/tom-doerr
