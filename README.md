@@ -11,7 +11,7 @@ pip3 install -r requirements.txt
 ```
 python3 main.py
 ```
-### Example Generation:
+### Example Code Generation:
 Python Snippet
 ```python
 def print_something():
