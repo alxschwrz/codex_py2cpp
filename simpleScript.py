@@ -5,9 +5,7 @@ def add_something(x, y):
 
 
 def print_something_fancy(n):
-    for it in range(n):
-        string_to_print = it * "#"
-        print(string_to_print)
+    [print(it * "#") for it in range(1, n)]
 
 
 def fibonacci(n):
@@ -23,6 +21,8 @@ def fibonacci(n):
 
 if __name__ == "__main__":
     print('Okay, lets go...')
-    print(add_something(5, 2))
-    print_something_fancy(20)
+    x = add_something(5, 4)
+    print("taking the result and printing something fancy with it...")
+    print_something_fancy(x)
+    print("doing the fibonacci of {}...".format(35))
     print(fibonacci(35))
