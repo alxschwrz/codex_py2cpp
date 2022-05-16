@@ -67,7 +67,7 @@ def generate_completion(input_prompt, num_tokens):
     temperature = 0.0
     if SET_TEMPERATURE_NOISE:
         temperature += 0.1 * round(random.uniform(-1, 1), 1)
-    print("CODEX: Let me come up with something new ...")
+    print("__CODEX: Let me come up with something new ...")
     response = openai.Completion.create(engine='code-davinci-002', prompt=input_prompt, temperature=temperature,
                                         max_tokens=num_tokens, stream=STREAM, stop='===================\n',
                                         top_p=1.0, frequency_penalty=0.0, presence_penalty=0.0)
@@ -106,8 +106,7 @@ def test_cpp_compilation(cppFile):
 
 
 def iterate_for_compilable_solution(prompt, maxIterations):
-    print('Iterating for a compilable C++ solution ...')
-    print()
+    print('Codex is looking for a compilable C++ solution ...')
     for it in range(maxIterations):
         response = generate_completion(prompt, num_tokens=MAX_TOKENS_DEFAULT)
         textResponse = get_generated_response(response)
