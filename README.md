@@ -87,7 +87,7 @@ int main() {
 
 
 
-Please test your generated code before usage.
+Please test your generated code before usage. [WIP]
 ## Credits
 
 This project is based on the OpenAI Codex project.
