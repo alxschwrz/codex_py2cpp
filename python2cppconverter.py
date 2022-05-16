@@ -9,7 +9,7 @@ import random
 
 USE_STREAM_FEATURE = True
 SET_TEMPERATURE_NOISE = False
-MAX_TOKENS_DEFAULT = 128
+MAX_TOKENS_DEFAULT = 1000
 
 STREAM = True
 API_KEYS_LOCATION = "./config"
@@ -52,21 +52,25 @@ def create_input_prompt(length=3000):
     inputPrompt = ''
     filename = PYTHON_FILE_TO_CONVERT
     with open(filename) as f:
-        inputPrompt += '\n===================\n# ' + filename + ':\n'
+        #inputPrompt += '# Python to C++: \n'
+        inputPrompt += '\n===================\n# Python to C++: \n'
+        inputPrompt += '# Python:\n'
+        #inputPrompt += '# ' + filename + ':\n'
         inputPrompt += f.read() + '\n'
 
     inputPrompt = inputPrompt[:length]
-    inputPrompt += '\n\n===================\n# ' + 'C++ Code:' + '\n'
+    inputPrompt += '\n\n===================\n// ' + 'C++:' + '\n'
     return inputPrompt
 
 
 def generate_completion(input_prompt, num_tokens):
-    temperature = 0.1
+    temperature = 0.0
     if SET_TEMPERATURE_NOISE:
         temperature += 0.1 * round(random.uniform(-1, 1), 1)
     print("CODEX: Let me come up with something new ...")
-    response = openai.Completion.create(engine='code-davinci-001', prompt=input_prompt, temperature=temperature,
-                                        max_tokens=num_tokens, stream=STREAM, stop='===================\n')
+    response = openai.Completion.create(engine='code-davinci-002', prompt=input_prompt, temperature=temperature,
+                                        max_tokens=num_tokens, stream=STREAM, stop='===================\n',
+                                        top_p=1.0, frequency_penalty=0.0, presence_penalty=0.0)
     return response
 
 
@@ -125,4 +129,4 @@ if __name__ == "__main__":
     initialize_openai_api()
     prompt = create_input_prompt()
     #print(prompt)
-    iterate_for_compilable_solution(prompt=prompt, maxIterations=5)
+    iterate_for_compilable_solution(prompt=prompt, maxIterations=3)
