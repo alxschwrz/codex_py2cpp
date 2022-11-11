@@ -1,0 +1,8 @@
+a=float(input("طول "))
+b=float(input("عرض"))
+
+
+print=("a+b")
+
+print(f"مساحت  = {a*b}")
+print(f"محیط  = {(a+b) * 2}")
